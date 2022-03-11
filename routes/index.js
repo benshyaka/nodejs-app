@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import "../db/db.mjs"
 import Blog from "../models/blog.js";
-
+impo
 /* GET home page. */
 router.get('/', (req, res, next) => {
     res.render('index', { title: 'Express' });
@@ -54,5 +54,3 @@ router.delete('/blogs/:id', async(req, res) => {
         res.status(500).send(error);
     }
 })
-
-export default router;
