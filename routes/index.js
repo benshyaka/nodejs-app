@@ -2,6 +2,10 @@ import express from "express";
 const router = express.Router();
 import "../db/db.mjs"
 import Blog from "../models/blog.js";
+import register from "../controllers/auth.js";
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+import User from "../models/user.js";
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -9,15 +13,20 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/blogs', async(req, res) => {
-    const blogpost = req.body
-    console.log(blogpost)
-    const blog = new Blog(blogpost);
-    try {
-        await blog.save();
-        res.status(201).send(blog);
-    } catch (error) {
-        res.status(500).send(error);
+    if (req.user) {
+        const blogpost = req.body
+            // console.log(blogpost)
+        const blog = new Blog(blogpost);
+        try {
+            await blog.save();
+            res.status(201).send(blog);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    } else {
+        return res.status(401).json({ message: 'Unauthorized user! Please sign in' });
     }
+
 })
 
 router.get('/blogs', async(req, res) => {
@@ -38,21 +47,83 @@ router.get('/blogs/:id', async(req, res) => {
         }
         res.status(200).send(blog);
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send("Bolg with that id can not be found");
     }
 })
 
 
 router.delete('/blogs/:id', async(req, res) => {
-    try {
-        const blog = await Blog.findByIdAndDelete(req.params.id);
-        if (!blog) {
-            return res.status(404).send();
+    if (req.user) {
+        try {
+            const blog = await Blog.findByIdAndDelete(req.params.id);
+            if (!blog) {
+                return res.status(404).send("Bolg with that id can not be found");
+            }
+            res.send("this blog is deleted" + blog);
+        } catch (error) {
+            res.status(500).send("Bolg with that id can not be found");
         }
-        res.send(blog);
-    } catch (error) {
-        res.status(500).send(error);
+    } else {
+        return res.status(401).json({ message: 'Unauthorized user! Please sign in' });
     }
+
 })
+
+router.post('/blogs/update/:id', async(req, res) => {
+    if (req.user) {
+        try {
+            const blogup = req.body
+            const blogupdate = await Blog.findOneAndUpdate(req.params.id, blogup);
+            if (!blogupdate) {
+                return "error could not update blog" + res.status(404);
+            }
+            res.send("Blog is updated: " + blogupdate);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    } else {
+        return res.status(401).json({ message: 'Unauthorized user! Please sign in' });
+    }
+
+})
+
+router.post('/auth/register', async(req, res) => {
+    console.log(req.body)
+    var newUser = new User(req.body);
+    newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
+    newUser.save(function(err, user) {
+        if (err) {
+            return res.status(400).send({
+                message: "Can't add new user " + err
+            });
+        } else {
+            user.hash_password = undefined;
+            return res.json(user);
+        }
+    });
+})
+
+router.post('/auth/signin', (req, res) => {
+    const userdata = User.findOne({
+        email: req.body.email
+    }, async(err, user) => {
+        console.log(req.body.password, user)
+
+        if (err) throw err;
+        if (!user) {
+            return res.status(401).json({ message: 'Authentication failed. Invalid email or password.' });
+        } else {
+            const match = await bcrypt.compare(req.body.password, user.hash_password);
+            if (match) {
+                return res.json({ token: jwt.sign({ email: user.email, fullName: user.names, _id: user._id }, 'RESTFULAPIs') });
+            } else {
+                return res.status(401).json({ message: 'Authentication failed. Invalid email or password.' });
+            }
+        }
+    });
+})
+
+
+
 
 export default router;

@@ -4,6 +4,9 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import bodyParser from "body-parser"
+import jsonwebtoken from "jsonwebtoken";
+
+import cors from "cors";
 import 'dotenv/config'
 
 import indexRouter from "./routes/index.js";
@@ -23,6 +26,24 @@ app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+var corsOptions = {
+    origin: "http://localhost:3000"
+};
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+    if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
+        jsonwebtoken.verify(req.headers.authorization.split(' ')[1], 'RESTFULAPIs', (err, decode) => {
+            if (err) req.user = undefined;
+            req.user = decode;
+            next();
+        });
+    } else {
+        req.user = undefined;
+        next();
+    }
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
