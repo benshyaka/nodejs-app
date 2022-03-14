@@ -4,7 +4,7 @@ const url = process.env.DBCON;
 
 const dbcon = new mongoose.connect(url)
     .then(() => {
-        console.log('Connected to database ')
+        console.log('Connected to database')
     })
     .catch((err) => {
         console.error(`Error connecting to the database. \n${err}`);

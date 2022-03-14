@@ -5,7 +5,9 @@
     "scripts": {
         "build": "babel ./bin/www -d dist",
         "transpile": "babel ./bin --out-dir dist-server",
-        "start": "node ./bin/www"
+        "start": "node ./bin/www",
+        "test": "jest --config ./jest.config.json",
+        "test:watch": "npm run test -- --watch"
     },
     "type": "module",
     "dependencies": {
@@ -24,11 +26,13 @@
         "mongodb": "^4.4.1",
         "mongoose": "^6.2.4",
         "morgan": "~1.9.1",
-        "nodemon": "^2.0.15"
+        "nodemon": "^2.0.15",
+        "swagger-ui-express": "^4.3.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.6",
         "@babel/core": "^7.17.5",
-        "@babel/preset-env": "^7.16.11"
+        "@babel/preset-env": "^7.16.11",
+        "supertest": "^6.2.2"
     }
 }

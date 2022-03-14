@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import "../db/db.mjs"
+import "../db/db.js"
 import Blog from "../models/blog.js";
 import register from "../controllers/auth.js";
 import jwt from "jsonwebtoken"
@@ -24,12 +24,12 @@ router.post('/blogs', async(req, res) => {
             res.status(500).send(error);
         }
     } else {
-        return res.status(401).json({ message: 'Unauthorized user! Please sign in' });
+        return res.status(401).json({ message: 'Unauthorized user! Please sign in to add new blog' });
     }
 
 })
 
-router.get('/blogs', async(req, res) => {
+router.get('/blogs/all', async(req, res) => {
     try {
         const blogs = await Blog.find({});
         console.log(blogs)
@@ -39,7 +39,7 @@ router.get('/blogs', async(req, res) => {
     }
 })
 
-router.get('/blogs/:id', async(req, res) => {
+router.get('/blogs/single/:id', async(req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
         if (!blog) {

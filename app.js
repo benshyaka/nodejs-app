@@ -5,12 +5,24 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import bodyParser from "body-parser"
 import jsonwebtoken from "jsonwebtoken";
+import fs from "fs"
 
 import cors from "cors";
 import 'dotenv/config'
 
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
+
+
+import swaggerUi from "swagger-ui-express"
+const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json'));
+
+import supertest from 'supertest'
+
+// import * as swaggerDocument from './swagger.json'
+
+
+
 
 const app = express();
 
@@ -31,6 +43,12 @@ var corsOptions = {
     origin: "http://localhost:3000"
 };
 app.use(cors(corsOptions));
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 
 app.use((req, res, next) => {
     if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {

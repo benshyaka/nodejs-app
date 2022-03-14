@@ -1,0 +1,205 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "nodejs-app",
+        "description": "My brand project with nodejs and mongodb",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [{
+            "name": "Users",
+            "description": "API for users in the system"
+        },
+        {
+            "name": "blogs",
+            "description": "API for CRUD operations"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Register new user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Signing in",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users2"
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs": {
+            "post": {
+                "tags": ["blogs"],
+                "summary": "Adding new blog to the mongodb database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blog"
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/{id}": {
+            "delete": {
+                "tags": ["blogs"],
+                "summary": "Deleting the blog from the database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blog"
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/update/{id}": {
+            "put": {
+                "tags": ["blogs"],
+                "summary": "Deleting the blog from the database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blog"
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/all": {
+            "get": {
+                "tags": ["blogs"],
+                "summary": "Reading all blogs from the database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blog"
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/single/{id}": {
+            "get": {
+                "tags": ["blogs"],
+                "summary": "Reading single blogs from the database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blog"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": ["name", "_id", "companies"],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "names": {
+                    "type": "string"
+                },
+                "hash_password": {
+                    "type": "string",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "createdAt": {
+                    "type": "date",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "User2": {
+            "required": ["name", "_id", "companies"],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+
+                "password": {
+                    "type": "string",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "blog": {
+            "required": ["name", "_id", "companies"],
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "image": {
+                    "type": "string",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "createdAt": {
+                    "type": "date",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Users": {
+            "type": "array",
+            "$ref": "#/definitions/User"
+        },
+        "Users2": {
+            "type": "array",
+            "$ref": "#/definitions/User2"
+        }
+    }
+}
