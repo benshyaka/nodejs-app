@@ -10,8 +10,6 @@ import User from "../models/user.js";
 
 
 import "../db/db.mjs"
-import Blog from "../models/blog.js";
-impo
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
