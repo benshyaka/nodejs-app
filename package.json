@@ -24,9 +24,9 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "build": "babel ./bin/www -d dist",
+        "build": "babel ./bin/www.js -d dist",
         "transpile": "babel ./bin --out-dir dist-server",
-        "start": "node ./bin/www",
+        "start": "node ./bin/www.js",
         "test": "jest --config ./jest.config.json",
         "test:watch": "npm run test -- --watch"
     },
