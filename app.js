@@ -17,7 +17,7 @@ import usersRouter from "./routes/users.js";
 import swaggerUi from "swagger-ui-express"
 const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json'));
 
-import supertest from 'supertest'
+// import supertest from 'supertest'
 
 // import * as swaggerDocument from './swagger.json'
 
