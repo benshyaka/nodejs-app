@@ -1,5 +1,6 @@
 import express from "express";
 const router = express.Router();
+<<<<<<< HEAD
 import "../db/db.js"
 import Blog from "../models/Blog.js";
 import register from "../controllers/auth.js";
@@ -7,6 +8,11 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import User from "../models/user.js";
 
+=======
+import "../db/db.mjs"
+import Blog from "../models/blog.js";
+impo
+>>>>>>> 99ae65f1e3848f212ddf2d38be676258d133d4a1
 /* GET home page. */
 router.get('/', (req, res, next) => {
     res.render('index', { title: 'Express' });
