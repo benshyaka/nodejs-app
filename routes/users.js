@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+import express from "express";
+const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', (req, res, next) => {
+    if (req.user) {
+        res.send(req.user);
+        next();
+    } else {
+        return res.status(401).json({ message: 'Unauthorized user! Please sign in' });
+    }
 });
 
-module.exports = router;
+export default router;

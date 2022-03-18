@@ -1,13 +1,13 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose"
 
-const url = `mongodb+srv://benjamin:benjamin@cluster0.ywrfg.mongodb.net/nodejs?retryWrites=true&w=majority`;
+const url = process.env.DBCON;
 
-const dbcon = mongoose.connect(url)
+const dbcon = new mongoose.connect(url)
     .then(() => {
-        console.log('Connected to database ')
+        console.log('Connected to database')
     })
     .catch((err) => {
         console.error(`Error connecting to the database. \n${err}`);
     })
 
-module.exports = dbcon;
+export default dbcon;
