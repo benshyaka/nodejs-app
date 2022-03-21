@@ -18,7 +18,11 @@ router.post('/blogs/add', async(req, res) => {
         const blog = new Blog(blogpost);
         try {
             await blog.save();
+<<<<<<< HEAD
             res.status(201).json({status: "success", data: blog});
+=======
+            res.status(200).send(blog);
+>>>>>>> ft-auth
         } catch (error) {
             res.status(500).json({status: "failed", data: blog});
         }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const url = process.env.DBCON;
+const url = process.env.MONGODB_URI;
 
 const dbcon = new mongoose.connect(url)
     .then(() => {
