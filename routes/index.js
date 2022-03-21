@@ -45,9 +45,9 @@ router.get('/blogs/single/:id', async(req, res) => {
         }
         res.status(200).json({status: "success", data: blog});
     } catch (error) {
-res.status(500).json({ status: "error", message:'Unable to delete data from database, id is required'})
-
-
+        res.status(500).json({ status: "error", message:'Unable to delete data from database, id is required'})
+    }
+})
 router.delete('/blogs/:id', async(req, res) => {
     if (req.user) {
         try {
