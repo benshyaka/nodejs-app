@@ -1,0 +1,12 @@
+{
+  coverage_file_path: './coverage/json-summary.json'
+}
+
+ {
+   badges: {
+     coverage: {
+      logo: 'foo'
+      color: 'bar'
+     }
+   }
+ }

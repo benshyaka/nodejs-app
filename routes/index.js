@@ -19,7 +19,7 @@ router.post('/blogs', async(req, res) => {
         const blog = new Blog(blogpost);
         try {
             await blog.save();
-            res.status(201).send(blog);
+            res.status(200).send(blog);
         } catch (error) {
             res.status(500).send(error);
         }
@@ -69,7 +69,7 @@ router.delete('/blogs/:id', async(req, res) => {
 
 })
 
-router.post('/blogs/update/:id', async(req, res) => {
+router.put('/blogs/update/:id', async(req, res) => {
     if (req.user) {
         try {
             const blogup = req.body
