@@ -3,7 +3,7 @@
     "version": "14.9.0",
     "private": true,
     "scripts": {
-        "build": "babel ./bin/www -d dist",
+        "build": "babel ./bin/www.js -d dist",
         "transpile": "babel ./bin --out-dir dist-server",
         "start": "node ./bin/www",
         "test": "nyc --reporter=text mocha ./test/*.js --timeout 50000",
