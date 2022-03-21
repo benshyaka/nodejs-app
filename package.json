@@ -1,6 +1,6 @@
 {
     "name": "nodejs-app",
-    "version": "0.0.0",
+    "version": "14.9.0",
     "private": true,
     "scripts": {
         "build": "babel ./bin/www -d dist",
