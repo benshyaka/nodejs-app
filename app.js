@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import bodyParser from "body-parser"
 import jsonwebtoken from "jsonwebtoken";
+// import cookieParser from"cookie-parser";
 import fs from "fs"
 
 import cors from "cors";
@@ -53,10 +54,13 @@ app.use(
 );
 
 app.use((req, res, next) => {
-    if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
-        jsonwebtoken.verify(req.headers.authorization.split(' ')[1], 'RESTFULAPIs', (err, decode) => {
+    if (req.cookies.access_token) {
+        // const stoken = req.headers.authorization.split(' ')[1]
+        jsonwebtoken.verify(req.cookies.access_token, 'RESTFULAPIs', (err, decode) => {
             if (err) req.user = undefined;
             req.user = decode;
+            // console.log(req.cookies.access_token)
+            // res.setHeader('Authorization', req.headers.authorization.split(' ')[1])
             next();
         });
     } else {
@@ -64,6 +68,8 @@ app.use((req, res, next) => {
         next();
     }
 });
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

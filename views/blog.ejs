@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHYAKA</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body class="blog-body">
+    <main>
+        <!----------------------- navigation bar section ------------------------>
+        <menu class="navbar">
+            <nav>
+                <a href="../index.html"><img src="../images/SHYAKA.png" class="img" alt="SHYAKA Logo"></a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/allposts.html"><strong>Blog</strong> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/contact.html">Contact</a>
+                    </li>
+                </ul>
+                <button type="button" class="btn">Hire me</button>
+                <a href="../pages/login.html">
+                    <img src="../images/login.png" class="login-img" alt="SHYAKA Logo">
+                </a>
+            </nav>
+        </menu>
+        <!----------------------- navigation bar section ------------------------>
+
+
+    </main>
+
+    <section class="blog-section">
+
+        <div class="row">
+            <% if (data) { %>
+                <div class="column1">
+
+                    <h3>
+                        <div class="title" id="title">
+                            <%- data.title %>
+                        </div>
+                    </h3>
+                    <h4>
+                        <small><div id="ntitle">Home/Blog/single/<%- data.title %></div></small>
+                    </h4>
+                    <div>
+                        <img src="<%- data.image %>" id="image" width="700px" class="img" alt="UI/UX Desing"><br>
+                        <div id="dtitle"> A blog by
+                            <%- data.author %> On
+                                <%- data.createdAt %>
+                        </div><br>
+                        <span><small>Technology |  3 comments</small></span>
+                        <p>
+                            <div id="body">
+                                <%- data.body %>
+                            </div>
+                        </p>
+                    </div>
+
+                    <h4>Comments</h4>
+                    <div class="comme1">
+                        <img src="../images/user1.png" class="comme-img" alt="User profile">
+                        <div class="comment-text">
+                            <strong>SHYAKA Benjamin</strong> <br>
+                            <span>
+                                With Ionic version 3 and Lazy Loading you don’t have to define all the components in the app.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="comme1">
+                        <img src="../images/user2.png" class="comme-img" alt="User profile">
+                        <div class="comment-text">
+                            <strong>SHYAKA Benjamin</strong> <br>
+                            <span>
+                                With Ionic version 3 and Lazy Loading you don’t have to define all the components in the app.
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h3>Leave a comment</h3>
+                    <div class="comment">
+                        <form action="">
+                            <label for="exampleFormControlInput1" class="form-label">Names</label>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John Doe">
+                            </div>
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            </div>
+                            <label for="exampleFormControlTextarea1" class="form-label">Comment</label>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+
+                    <div class="column2">
+                        <h3 class="blog-title">Recent blogs</h3>
+                        <div class="blogs">
+                            <img src="../images/blog1.png" class="img-blog" alt="UI/UX Desing">
+                            <div class="blog-text">
+                                <span> <strong>By SHYAKA Benjamin   on 02 feb 2022</strong></span><br><br>
+                                <span class="">Bass is thick and highs avoid that crinkly crunch, making them ideal for appreciating sound design in movies and discovering new parts</span>
+                                <a href="">Read more</a>
+                            </div>
+                        </div>
+                        <div class="blogs">
+                            <img src="../images/blog1.png" class="img-blog" alt="UI/UX Desing">
+                            <div class="blog-text">
+                                <span> <strong>By SHYAKA Benjamin   on 02 feb 2022</strong></span><br><br>
+                                <span class="">Bass is thick and highs avoid that crinkly crunch, making them ideal for appreciating sound design in movies and discovering new parts</span>
+                                <a href="">Read more</a>
+                            </div>
+                        </div>
+                        <h3 class="blog-title">Instagram feed</h3>
+                        <div class="blogs">
+                            <img src="../images/inst1.png" alt="">
+                            <img src="../images/inst2.png" alt="">
+                            <img src="../images/inst3.png" alt="">
+                            <img src="../images/inst4.png" alt="">
+                        </div>
+                        <h3 class="blog-title">Subscribe to our news feed</h3>
+                        <div class="news">
+                            <form action="">
+                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+        </div>
+
+    </section>
+
+
+
+    <footer>
+        <div>
+            <p><img src="../images/SHYAKA.png" class="footer-img" alt=""></p>
+            <span>Kigali-Rwandas </span>
+            <span>Nyarugenge</span>
+        </div>
+
+        <div class="useful">
+            <p>Useful link</p>
+            <a class="social-btn">&gt; About</a>
+            <a class="social-btn">&gt; Blog</a>
+            <a class="social-btn">&gt; Contact</a>
+        </div>
+
+        <div>
+            <p>Follow me on my social medias</p>
+            <a class="social-btn"><img src="../images/in.png" class="social-img" alt=""></a>
+            <a class="social-btn"><img src="../images/ins.png" class="social-img" alt=""></a>
+            <a class="social-btn"><img src="../images/face.png" class="social-img" alt=""></a>
+            <a class="social-btn"><img src="../images/git.png" class="social-img" alt=""></a>
+            <a class="social-btn"><img src="../images/twi.png" class="social-img" alt=""></a>
+        </div>
+    </footer>
+
+    <script src="/javascripts/single.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHYAKA dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/dashboard_style.css">
+</head>
+
+<body>
+
+
+    <div class="grid-container">
+        <div class="item1">
+            <main>
+                <menu class="navbar">
+                    <nav>
+                        <a href="/"><img src="/images/SHYAKA.png" class="img" alt="SHYAKA Logo"></a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/user/blogs/all"><strong>Blogs</strong> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/blog.html">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/about.html">Settings</a>
+                            </li>
+                        </ul>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Settings</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="/auth/logout">Logout</a>
+                                <a href="#about">My profile</a>
+                            </div>
+                        </div>
+                    </nav>
+                </menu>
+
+            </main>
+        </div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="headings">
+                <a href="/blogs/addblog">
+                    <button type="button" class="edit">Add blog</button>
+                </a>
+            </div>
+            <h2>Blogs list</h2>
+            <p class="alert"><small>
+                <% if (status) { %>
+                    <%- status %>
+                        <% } %>
+                </small></p>
+            <br>
+            <p>You can edit or delete the blog</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Picture</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="divvv">
+
+                </tbody>
+            </table>
+            <div class="headings">
+                <a class="pagination" href="">&LessLess; Previous</a>
+                <a class="pagination" href="">1</a>
+                <a class="pagination" href="">2</a>
+                <a class="pagination" href="">3</a>
+                <a class="pagination" href="">Next &GreaterGreater; </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="/javascripts/allposts.js"></script>
+    <script src="/javascripts/main.js"></script>
+
+</body>
+
+</html>

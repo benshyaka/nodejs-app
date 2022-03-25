@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHYAKA dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/dashboard_style.css">
+</head>
+
+<body>
+
+
+    <div class="grid-container">
+        <div class="item1">
+            <main>
+                <menu class="navbar">
+                    <nav>
+                        <a href="/"><img src="/images/SHYAKA.png" class="img" alt="SHYAKA Logo"></a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/user/blogs/all"><strong>Blogs</strong> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/blog.html">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/about.html">Settings</a>
+                            </li>
+                        </ul>
+
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Settings</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="/auth/logout">Logout</a>
+                                <a href="#about">My profile</a>
+                            </div>
+                        </div>
+                    </nav>
+                </menu>
+
+            </main>
+        </div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="headings">
+                <div class="posts">
+                    <!-- Rendered posts -->
+                </div>
+                <a href="/blogs/addblog">
+                    <button type="button" class="edit">Add blog</button>
+                </a>
+            </div>
+            <h2>Welcome</h2>
+            <p>Some actions yoou can take</p>
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <strong><span>Recent blog</span></strong><br>
+                            <img src="/images/blog1.png" class="img-blog" alt="UI/UX Desing">
+                            <div class="blog-text">
+                                <span> <strong>By SHYAKA Benjamin   on 02 feb 2022</strong></span><br><br>
+                                <span class="">Bass is thick and highs avoid that crinkly crunch, making them ideal for appreciating sound design in movies and discovering new parts</span>
+                                <a href="">Read more</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <strong><span>Recent Message</span></strong> <br>
+                        <small>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi doloribus ex veritatis sed ipsum magnam omnis eveniet neque earum, suscipit placeat sit tempore. Assumenda, perspiciatis! Repellendus accusamus sapiente libero ipsum!</small>
+                    </td>
+                    <td>
+                        <strong><span>My Profile</span></strong> <br> Names: <small>SHYAKA Benjamin</small><br> email: <small>benshyaka99@gmai.com</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/user/blogs/all" class="edit">View all blogs</a>
+                        <a href="../dashboard/allblogs.html" class="edit">Edit this Blog</a>
+                    </td>
+                    <td>
+                        <a href="../dashboard/allblogs.html" class="edit">View all Messages</a>
+                    </td>
+                    <td>
+                        <a href="../dashboard/allblogs.html" class="edit">Edit my profile</a>
+                    </td>
+                </tr>
+
+                <div>
+
+                </div>
+        </div>
+
+
+        </div>
+    </section>
+
+    <script src="/javascripts/main.js"></script>
+</body>
+
+</html>
