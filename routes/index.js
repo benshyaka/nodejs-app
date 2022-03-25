@@ -157,14 +157,15 @@ router.get('/user/blogs/delete/:id', async(req, res) => {
 router.get('/user/blogs/update/:id', async(req, res) => {
     if (req.user) {
         try {
-            const blog = await Blog.find(req.params.id);
+            const blog = await Blog.findById(req.params.id);
+            console.log(req.params.id)
             if (!blog) {
                 return res.status(200).render('update', { status: "", data: blog })
                     // redirect('/user/blogs/all');
             }
             res.status(200).render('update', { status: "", data: blog });
         } catch (error) {
-            res.status(500).json({ status: "error", message: 'Unable to delete data from database, id is required' })
+            res.status(500).json({ status: "error", message: 'Unable to retrive data from database to update, id is required' })
         }
     } else {
         return res.status(401).json({ status: "fail", message: 'Unauthorized user! Please sign in' });
